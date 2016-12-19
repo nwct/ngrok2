@@ -110,8 +110,6 @@ func (m *LocalMetrics) OpenTunnel(t *Tunnel) {
 		m.tcpTunnelMeter.Mark(1)
 	case "http":
 		m.httpTunnelMeter.Mark(1)
-	case "https":
-		m.httpsTunnelMeter.Mark(1)
 	}
 }
 
@@ -138,7 +136,6 @@ func (m *LocalMetrics) Report() {
 			"osx":                   m.osxCounter.Count(),
 			"other":                 m.otherCounter.Count(),
 			"http隧道数":             m.httpTunnelMeter.Count(),
-			"https隧道数":            m.httpsTunnelMeter.Count(),
 			"tcp隧道数":              m.tcpTunnelMeter.Count(),
 			"隧道总数":               m.tunnelMeter.Count(),
 			"隧道率":                 m.tunnelMeter.Rate1(),
