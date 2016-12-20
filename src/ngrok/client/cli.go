@@ -36,6 +36,7 @@ Advanced usage: ngrok [OPTIONS] <command> [command args] [...]
 `
 
 type Options struct {
+	ServerAddr    string
 	config    string
 	logto     string
 	loglevel  string
@@ -55,10 +56,14 @@ func ParseArgs() (opts *Options, err error) {
 		fmt.Fprintf(os.Stderr, usage2)
 	}
 
-
+	ServerAddr := flag.String(
+		"server_addr",
+		"",
+		"ngrok服务器地址. ")
+	
 	config := flag.String(
 		"config",
-		"ngrok.cfg",
+		"",
 		"ngrok配置文件的路径. (default: $HOME/.ngrok)")
 
 	logto := flag.String(
@@ -99,6 +104,7 @@ func ParseArgs() (opts *Options, err error) {
 	flag.Parse()
 
 	opts = &Options{
+		ServerAddr:    *ServerAddr,
 		config:    *config,
 		logto:     *logto,
 		loglevel:  *loglevel,
