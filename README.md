@@ -1,6 +1,6 @@
 #备份并做了部分优化修改与汉化工作
 
-###已经编译好的客户端及服务端下载地址：</br>https://github.com/chengangwin/ngrok/releases
+###已经编译好的客户端及服务端下载地址：</br>https://github.com/chengangwin/ngrok2/releases
 
 客户端为：ngrok</br>
 启动方式1：ngrok 80</br></br>
