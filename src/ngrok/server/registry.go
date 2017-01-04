@@ -190,7 +190,7 @@ func (r *ControlRegistry) Add(clientId string, ctl *Control) (oldCtl *Control) {
 	}
 
 	r.controls[clientId] = ctl
-	r.Info("注册控制id %s", clientId)
+	r.Info("注册控制ID %s", clientId)
 	return
 }
 

@@ -122,7 +122,7 @@ func DialHttpProxy(proxyUrl, addr, typ string, tlsCfg *tls.Config) (conn *logged
 	case "https":
 		proxyTlsConfig = new(tls.Config)
 	default:
-		err = fmt.Errorf("Proxy URL scheme must be http or https, got: %s", parsedUrl.Scheme)
+		err = fmt.Errorf("代理URL方案必须是http或https，已获得: %s", parsedUrl.Scheme)
 		return
 	}
 
@@ -151,7 +151,7 @@ func DialHttpProxy(proxyUrl, addr, typ string, tlsCfg *tls.Config) (conn *logged
 	resp.Body.Close()
 
 	if resp.StatusCode != 200 {
-		err = fmt.Errorf("Non-200 response from proxy server: %s", resp.Status)
+		err = fmt.Errorf("非200响应来自代理服务器: %s", resp.Status)
 		return
 	}
 
@@ -181,7 +181,7 @@ func (c *loggedConn) SetType(typ string) {
 	c.typ = typ
 	c.ClearLogPrefixes()
 	c.AddLogPrefix(c.Id())
-	c.Info("Renamed connection %s", oldId)
+	c.Info("重命名连接 %s", oldId)
 }
 
 func (c *loggedConn) CloseRead() error {
@@ -203,9 +203,9 @@ func Join(c Conn, c2 Conn) (int64, int64) {
 		var err error
 		*bytesCopied, err = io.Copy(to, from)
 		if err != nil {
-			from.Warn("Copied %d bytes to %s before failing with error %v", *bytesCopied, to.Id(), err)
+			from.Warn("复制 %d 字节到 %s 在出现错误 %v 前", *bytesCopied, to.Id(), err)
 		} else {
-			from.Debug("Copied %d bytes to %s", *bytesCopied, to.Id())
+			from.Debug("复制 %d 字节到 %s", *bytesCopied, to.Id())
 		}
 	}
 
@@ -213,7 +213,7 @@ func Join(c Conn, c2 Conn) (int64, int64) {
 	var fromBytes, toBytes int64
 	go pipe(c, c2, &fromBytes)
 	go pipe(c2, c, &toBytes)
-	c.Info("Joined with connection %s", c2.Id())
+	c.Info("已加入连接 %s", c2.Id())
 	wait.Wait()
 	return fromBytes, toBytes
 }

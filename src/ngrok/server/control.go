@@ -97,7 +97,7 @@ func NewControl(ctlConn conn.Conn, authMsg *msg.Auth) {
 	ctlConn.AddLogPrefix(c.id)
 
 	if authMsg.Version != version.Proto {
-		failAuth(fmt.Errorf("Incompatible versions. Server %s, client %s. Download a new version at http://ngrok.com", version.MajorMinor(), authMsg.Version))
+		failAuth(fmt.Errorf("不兼容的版本。 服务器 %s, 客户端 %s. 下载新版本 联系:372763861@qq.com", version.MajorMinor(), authMsg.Version))
 		return
 	}
 
@@ -161,7 +161,7 @@ func (c *Control) manager() {
 	// don't crash on panics
 	defer func() {
 		if err := recover(); err != nil {
-			c.conn.Info("Control::manager failed with error %v: %s", err, debug.Stack())
+			c.conn.Info("Control::管理器失败，出现错误 %v: %s", err, debug.Stack())
 		}
 	}()
 
@@ -179,7 +179,7 @@ func (c *Control) manager() {
 		select {
 		case <-reap.C:
 			if time.Since(c.lastPing) > pingTimeoutInterval {
-				c.conn.Info("Lost heartbeat")
+				c.conn.Info("失去心跳")
 				c.shutdown.Begin()
 			}
 
@@ -204,7 +204,7 @@ func (c *Control) manager() {
 func (c *Control) writer() {
 	defer func() {
 		if err := recover(); err != nil {
-			c.conn.Info("Control::writer failed with error %v: %s", err, debug.Stack())
+			c.conn.Info("Control::写入失败，出现错误 %v: %s", err, debug.Stack())
 		}
 	}()
 
@@ -226,7 +226,7 @@ func (c *Control) writer() {
 func (c *Control) reader() {
 	defer func() {
 		if err := recover(); err != nil {
-			c.conn.Warn("Control::reader failed with error %v: %s", err, debug.Stack())
+			c.conn.Warn("Control::读取失败，出现错误 %v: %s", err, debug.Stack())
 		}
 	}()
 

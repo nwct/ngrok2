@@ -97,7 +97,7 @@ func (v *TermView) draw() {
 		v.APrintf(termbox.ColorYellow, 30, 0, updateMsg)
 	}
 
-	v.APrintf(termbox.ColorBlue|termbox.AttrBold, 0, 1, " ☆夢幻煋涳☆  QQ：372763861")
+	v.APrintf(termbox.ColorBlue|termbox.AttrBold, 0, 1, " www.lu8.win")
 	statusStr, statusColor := connStatusRepr(state.GetConnStatus())
 	v.APrintf(statusColor, 0, 3, "%-15s%s", "隧道状态", statusStr)
 

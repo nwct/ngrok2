@@ -131,18 +131,18 @@ func (m *LocalMetrics) Report() {
 	for {
 		time.Sleep(m.reportInterval)
 		buffer, err := json.Marshal(map[string]interface{}{
-			"windows":               m.windowsCounter.Count(),
-			"linux":                 m.linuxCounter.Count(),
-			"osx":                   m.osxCounter.Count(),
-			"other":                 m.otherCounter.Count(),
-			"http隧道数":             m.httpTunnelMeter.Count(),
-			"tcp隧道数":              m.tcpTunnelMeter.Count(),
-			"隧道总数":               m.tunnelMeter.Count(),
-			"隧道率":                 m.tunnelMeter.Rate1(),
-			"连接数":                 m.connMeter.Count(),
-			"连接率":                 m.connMeter.Rate1(),
-			"接收字节数":         m.bytesInCount.Count(),
-			"发送字节数":        m.bytesOutCount.Count(),
+			"windows": m.windowsCounter.Count(),
+			"linux":   m.linuxCounter.Count(),
+			"osx":     m.osxCounter.Count(),
+			"other":   m.otherCounter.Count(),
+			"http隧道数": m.httpTunnelMeter.Count(),
+			"tcp隧道数":  m.tcpTunnelMeter.Count(),
+			"隧道总数":    m.tunnelMeter.Count(),
+			"隧道率":     m.tunnelMeter.Rate1(),
+			"连接数":     m.connMeter.Count(),
+			"连接率":     m.connMeter.Rate1(),
+			"接收字节数":   m.bytesInCount.Count(),
+			"发送字节数":   m.bytesOutCount.Count(),
 		})
 
 		if err != nil {

@@ -1,4 +1,4 @@
-﻿package client
+package client
 
 import (
 	"fmt"
@@ -69,9 +69,10 @@ func LoadConfiguration(opts *Options) (config *Configuration, err error) {
 
 	// set configuration defaults
 	if config.ServerAddr == "" {
-	    config.ServerAddr = opts.ServerAddr
-	    if opts.ServerAddr == "" {
-	    config.ServerAddr = defaultServerAddr}
+		config.ServerAddr = opts.ServerAddr
+		if opts.ServerAddr == "" {
+			config.ServerAddr = defaultServerAddr
+		}
 	}
 
 	if config.InspectAddr == "" {

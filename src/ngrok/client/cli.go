@@ -1,4 +1,4 @@
-﻿package client
+package client
 
 import (
 	"flag"
@@ -36,17 +36,17 @@ Advanced usage: ngrok [OPTIONS] <command> [command args] [...]
 `
 
 type Options struct {
-	ServerAddr    string
-	config    string
-	logto     string
-	loglevel  string
-	authtoken string
-	httpauth  string
-	hostname  string
-	protocol  string
-	subdomain string
-	command   string
-	args      []string
+	ServerAddr string
+	config     string
+	logto      string
+	loglevel   string
+	authtoken  string
+	httpauth   string
+	hostname   string
+	protocol   string
+	subdomain  string
+	command    string
+	args       []string
 }
 
 func ParseArgs() (opts *Options, err error) {
@@ -59,8 +59,8 @@ func ParseArgs() (opts *Options, err error) {
 	ServerAddr := flag.String(
 		"server_addr",
 		"",
-		"ngrok服务器地址. ")
-	
+		"ngrok服务器地址:端口. ")
+
 	config := flag.String(
 		"config",
 		"",
@@ -104,16 +104,16 @@ func ParseArgs() (opts *Options, err error) {
 	flag.Parse()
 
 	opts = &Options{
-		ServerAddr:    *ServerAddr,
-		config:    *config,
-		logto:     *logto,
-		loglevel:  *loglevel,
-		httpauth:  *httpauth,
-		subdomain: *subdomain,
-		protocol:  *protocol,
-		authtoken: *authtoken,
-		hostname:  *hostname,
-		command:   flag.Arg(0),
+		ServerAddr: *ServerAddr,
+		config:     *config,
+		logto:      *logto,
+		loglevel:   *loglevel,
+		httpauth:   *httpauth,
+		subdomain:  *subdomain,
+		protocol:   *protocol,
+		authtoken:  *authtoken,
+		hostname:   *hostname,
+		command:    flag.Arg(0),
 	}
 
 	switch opts.command {
@@ -132,10 +132,10 @@ func ParseArgs() (opts *Options, err error) {
 	case "":
 
 		err = fmt.Errorf("错误: 指定一个要隧道连接到本地的端口，或" +
-			"一条ngrok命令.\n\n例: \n要映射端口80，请运行 " +
-			"'ngrok 80'\n要启动配置文件ngrok.cfg里所有隧道，请运行'ngrok start-all'")
+			"一条ngrok命令.\n例: \n要映射端口80，请运行 " +
+			"'ngrok 80'\n要启动配置文件ngrok.cfg里所有隧道，请运行'ngrok start-all'\n")
+
 		return
-       
 
 	default:
 		if len(flag.Args()) > 1 {
@@ -147,7 +147,7 @@ func ParseArgs() (opts *Options, err error) {
 
 		opts.command = "default"
 		opts.args = flag.Args()
-		
+
 	}
 
 	return

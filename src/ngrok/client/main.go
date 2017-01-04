@@ -18,7 +18,9 @@ func init() {
 			fmt.Println("你需要打开cmd.exe并从命令行中运行!")
 			time.Sleep(5 * time.Second)
 			os.Exit(1)
+
 		}
+
 	}
 }
 

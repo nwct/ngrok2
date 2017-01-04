@@ -107,7 +107,7 @@ func NewTunnel(m *msg.ReqTunnel, ctl *Control) (t *Tunnel, err error) {
 	case "tcp":
 		bindTcp := func(port int) error {
 			if t.listener, err = net.ListenTCP("tcp", &net.TCPAddr{IP: net.ParseIP("0.0.0.0"), Port: port}); err != nil {
-				err = t.ctl.conn.Error("Error binding TCP listener: %v", err)
+				err = t.ctl.conn.Error("绑定TCP出错: %v", err)
 				return err
 			}
 
@@ -142,7 +142,7 @@ func NewTunnel(m *msg.ReqTunnel, ctl *Control) (t *Tunnel, err error) {
 			portPart := parts[len(parts)-1]
 			port, err = strconv.Atoi(portPart)
 			if err != nil {
-				t.ctl.conn.Error("Failed to parse cached url port as integer: %s", portPart)
+				t.ctl.conn.Error("无法将缓存网址端口解析为整数: %s", portPart)
 			} else {
 				// we have a valid, cached port, let's try to bind with it
 				if bindTcp(port) != nil {

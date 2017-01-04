@@ -21,7 +21,7 @@ import (
 )
 
 const (
-	defaultServerAddr   = "ngrokd.chengang.win:4443"
+	defaultServerAddr   = "ngrokd.yilu.ml:4443"
 	defaultInspectAddr  = "127.0.0.1:4040"
 	pingInterval        = 20 * time.Second
 	maxPongLatency      = 15 * time.Second
